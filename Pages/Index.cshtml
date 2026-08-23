@@ -1,0 +1,49 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "خانه";
+}
+
+<section class="hero">
+    <div class="hero__content">
+        <p class="eyebrow">ASP.NET Core 10</p>
+        <h1>وب‌سایت آروین تبریز</h1>
+        <p class="lead">
+            یک شروع تمیز، واکنش‌گرا و راست‌به‌چپ برای ساخت وب‌سایت شما با Razor Pages.
+        </p>
+        <div class="hero__actions">
+            <a class="button button--primary" href="#services">مشاهده خدمات</a>
+            <a class="button button--secondary" href="#contact">تماس با ما</a>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="section">
+    <div class="section__header">
+        <p class="eyebrow">خدمات</p>
+        <h2>آنچه می‌توانید توسعه دهید</h2>
+    </div>
+    <div class="cards">
+        <article class="card">
+            <h3>طراحی مدرن</h3>
+            <p>رابط کاربری ساده، خوانا و مناسب نمایش در موبایل، تبلت و دسکتاپ.</p>
+        </article>
+        <article class="card">
+            <h3>معماری قابل توسعه</h3>
+            <p>پایه‌ای سبک با Razor Pages که به‌سادگی برای امکانات بعدی گسترش پیدا می‌کند.</p>
+        </article>
+        <article class="card">
+            <h3>آماده برای محتوا</h3>
+            <p>بخش‌های اولیه برای معرفی خدمات، مزیت‌ها و راه‌های ارتباطی آماده شده‌اند.</p>
+        </article>
+    </div>
+</section>
+
+<section id="contact" class="section contact-panel">
+    <div>
+        <p class="eyebrow">شروع همکاری</p>
+        <h2>برای نسخه بعدی آماده‌ایم</h2>
+        <p>می‌توانید امکاناتی مثل فرم تماس، پنل مدیریت، وبلاگ یا اتصال به دیتابیس را به این ساختار اضافه کنید.</p>
+    </div>
+    <a class="button button--primary" href="mailto:info@example.com">ارسال ایمیل</a>
+</section>
