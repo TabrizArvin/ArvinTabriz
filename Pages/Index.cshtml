@@ -4,69 +4,122 @@
     ViewData["Title"] = "خانه";
 }
 
-<section class="landing-hero landing-hero--resolved" aria-label="صفحه نخست آروین تبریز">
-    <div class="landing-hero__background" aria-hidden="true">
-        <span class="landing-hero__orb landing-hero__orb--one"></span>
-        <span class="landing-hero__orb landing-hero__orb--two"></span>
-        <span class="landing-hero__grid"></span>
-    </div>
-
-    <div class="landing-hero__content">
-        <p class="eyebrow">Arvin Tabriz</p>
-        <p class="hero__kicker">طراحی، اجرا و راه‌اندازی وب‌سایت</p>
-        <h1>ساخت صفحه اول حرفه‌ای، دقیق و آماده انتشار</h1>
+<section class="hero" aria-labelledby="hero-title">
+    <div class="hero__content">
+        <p class="eyebrow">Arvin Tabriz · از ۱۳۷۲</p>
+        <h1 id="hero-title">تأمین، تولید و خدمات تخصصی تجهیزات ریلی</h1>
         <p class="lead">
-            یک لندینگ تمام‌صفحه با چیدمان راست‌به‌چپ، تصویرسازی مدرن، دکمه‌های واضح و بخش‌های کاربردی برای شروع سریع وب‌سایت شما.
+            آروین تبریز با تمرکز بر ساخت بوژی، تأمین قطعات واگن و ارائه خدمات مهندسی و لیزینگ،
+            همراه قابل اعتماد صنایع ریلی ایران است.
         </p>
         <div class="hero__actions">
-            <a class="button button--primary" href="#services">مشاهده خدمات</a>
-            <a class="button button--secondary" href="#contact">شروع همکاری</a>
+            <a class="button button--primary" href="#products">مشاهده محصولات</a>
+            <a class="button button--secondary" href="#contact">درخواست مشاوره</a>
         </div>
     </div>
-
-    <aside class="landing-hero__preview" aria-label="پیش‌نمایش امکانات صفحه">
-        <div class="preview-card preview-card--main">
-            <span class="preview-card__badge">صفحه اول</span>
-            <h2>طراحی مشابه نمونه شما</h2>
-            <p>ساختار تمیز، رنگ‌بندی یکپارچه و فاصله‌گذاری دقیق برای نمایش حرفه‌ای در موبایل و دسکتاپ.</p>
+    <div class="hero__stats" aria-label="دستاوردهای کلیدی آروین تبریز">
+        <div>
+            <strong>۴۰۰۰+</strong>
+            <span>بوژی تولیدشده</span>
         </div>
-        <div class="preview-card preview-card--small">
-            <strong>100%</strong>
-            <span>واکنش‌گرا</span>
+        <div>
+            <strong>۳۰+</strong>
+            <span>سال تجربه صنعتی</span>
         </div>
-        <div class="preview-card preview-card--small preview-card--accent">
-            <strong>RTL</strong>
-            <span>مناسب فارسی</span>
+        <div>
+            <strong>TSI</strong>
+            <span>همسو با استانداردهای اروپایی</span>
         </div>
-    </aside>
+    </div>
 </section>
 
-<section id="services" class="section">
+<section class="section intro-grid" aria-labelledby="about-title">
+    <div>
+        <p class="eyebrow">درباره شرکت</p>
+        <h2 id="about-title">بازطراحی حضور دیجیتال یک برند صنعتی باسابقه</h2>
+    </div>
+    <p>
+        نسخه تازه سایت با هدف معرفی روشن‌تر توانمندی‌های آروین تبریز طراحی می‌شود؛ از تولید بوژی و قطعات
+        واگن تا خدمات تعمیر، مهندسی، تأمین و لیزینگ. تمرکز این ساختار روی اعتمادسازی، دسترسی سریع به محصولات
+        و ساده‌سازی مسیر ارتباط مشتریان صنعتی است.
+    </p>
+</section>
+
+<section id="products" class="section">
+    <div class="section__header">
+        <p class="eyebrow">محصولات</p>
+        <h2>گروه‌های محصولی پیشنهادی برای سایت جدید</h2>
+    </div>
+    <div class="cards cards--four">
+        <article class="card">
+            <span class="card__icon">01</span>
+            <h3>بوژی و مجموعه‌های ریلی</h3>
+            <p>معرفی بوژی‌های باری، قطعات وابسته و ظرفیت‌های تولیدی شرکت در قالب صفحات محصول قابل توسعه.</p>
+        </article>
+        <article class="card">
+            <span class="card__icon">02</span>
+            <h3>جعبه یاتاقان و قطعات واگن</h3>
+            <p>دسته‌بندی قطعات پرمصرف، مشخصات فنی، کاربردها و امکان دریافت استعلام برای مشتریان سازمانی.</p>
+        </article>
+        <article class="card">
+            <span class="card__icon">03</span>
+            <h3>سیستم ترمز و اجزای مکانیکی</h3>
+            <p>نمایش قطعات تخصصی همراه با توضیحات فنی، استانداردها و تصاویر صنعتی برای افزایش اعتماد مخاطب.</p>
+        </article>
+        <article class="card">
+            <span class="card__icon">04</span>
+            <h3>قطعات لکوموتیو و تأمین</h3>
+            <p>ایجاد مسیر مشخص برای معرفی توان تأمین، واردات، ساخت داخل و همکاری با شبکه تأمین‌کنندگان.</p>
+        </article>
+    </div>
+</section>
+
+<section id="services" class="section section--dark">
     <div class="section__header">
         <p class="eyebrow">خدمات</p>
-        <h2>بخش‌های آماده برای صفحه اول</h2>
+        <h2>خدمات قابل ارائه در نسخه جدید سایت</h2>
     </div>
-    <div class="cards">
-        <article class="card">
-            <h3>هدر جذاب</h3>
-            <p>نمایش پیام اصلی سایت همراه با دکمه‌های اقدام و تصویرسازی مدرن.</p>
+    <div class="service-list">
+        <article>
+            <h3>لیزینگ واگن باری</h3>
+            <p>معرفی مدل همکاری، مزایا، شرایط اولیه و مسیر ثبت درخواست برای شرکت‌های حمل‌ونقل ریلی.</p>
         </article>
-        <article class="card">
-            <h3>معرفی خدمات</h3>
-            <p>کارت‌های خوانا برای توضیح سریع مزیت‌ها، خدمات یا محصولات شما.</p>
+        <article>
+            <h3>مهندسی، تعمیرات و بازسازی</h3>
+            <p>توضیح توان فنی تیم مهندسی، خدمات تعمیر و بازسازی بوژی و قطعات کلیدی ناوگان ریلی.</p>
         </article>
-        <article class="card">
-            <h3>دعوت به تماس</h3>
-            <p>بخش پایانی برای هدایت کاربر به ایمیل، تماس یا مرحله بعدی همکاری.</p>
+        <article>
+            <h3>تأمین قطعات و همکاری صنعتی</h3>
+            <p>طراحی صفحه اختصاصی برای ارتباط با مشتریان، تأمین‌کنندگان و پروژه‌های همکاری بلندمدت.</p>
         </article>
     </div>
+</section>
+
+<section class="section trust-panel" aria-labelledby="trust-title">
+    <div>
+        <p class="eyebrow">اعتمادسازی</p>
+        <h2 id="trust-title">ساختار پیشنهادی برای نمایش اعتبار شرکت</h2>
+        <p>
+            در مرحله بعد می‌توانیم تصاویر واقعی کارخانه، گواهینامه‌ها، مشتریان، پروژه‌ها، پرسش‌های متداول و اخبار
+            شرکت را از سایت وردپرسی قبلی استخراج و به صفحات مرتب و سریع منتقل کنیم.
+        </p>
+    </div>
+    <ul class="check-list">
+        <li>صفحه گواهینامه‌ها و استانداردها</li>
+        <li>بخش مشتریان و پروژه‌های شاخص</li>
+        <li>گالری تصاویر کارخانه و محصولات</li>
+        <li>نسخه انگلیسی برای مخاطبان بین‌المللی</li>
+    </ul>
 </section>
 
 <section id="contact" class="section contact-panel">
     <div>
         <p class="eyebrow">شروع همکاری</p>
-        <h2>صفحه اول آماده است</h2>
-        <p>اگر نمونه تصویری یا سایت مرجع دارید، می‌توانیم جزئیات رنگ، فونت، چینش و محتوا را دقیق‌تر مطابق همان تنظیم کنیم.</p>
+        <h2>برای طراحی کامل سایت جدید آماده‌ایم</h2>
+        <p>
+            این نسخه پایه می‌تواند در قدم‌های بعدی به فرم تماس، صفحه محصولات، چندزبانه‌سازی، پنل مدیریت،
+            اتصال دیتابیس و مهاجرت محتوای سایت وردپرسی قبلی مجهز شود.
+        </p>
     </div>
-    <a class="button button--primary" href="mailto:info@example.com">ارسال ایمیل</a>
+    <a class="button button--primary" href="mailto:info@arvintabriz.com">ارسال ایمیل</a>
 </section>

@@ -3,14 +3,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="وب‌سایت رسمی آروین تبریز؛ تولید، تأمین و خدمات تخصصی تجهیزات ریلی" />
     <title>@ViewData["Title"] - آروین تبریز</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
     <header class="site-header">
-        <a class="brand" asp-page="/Index">آروین تبریز</a>
+        <a class="brand" asp-page="/Index" aria-label="صفحه اصلی آروین تبریز">
+            <span>آروین</span>
+            <strong>تبریز</strong>
+        </a>
         <nav class="nav" aria-label="ناوبری اصلی">
             <a href="/">خانه</a>
+            <a href="/#products">محصولات</a>
             <a href="/#services">خدمات</a>
             <a href="/#contact">تماس</a>
         </nav>
@@ -22,7 +27,7 @@
 
     <footer class="site-footer">
         <span>© @DateTime.Now.Year آروین تبریز</span>
-        <span>ساخته شده با ASP.NET Core 10</span>
+        <span>طراحی شده برای معرفی مدرن توانمندی‌های ریلی شرکت</span>
     </footer>
 
     @await RenderSectionAsync("Scripts", required: false)
