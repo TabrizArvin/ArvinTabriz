@@ -10,14 +10,16 @@
 <body>
     <header class="site-header">
         <a class="brand" asp-page="/Index" aria-label="صفحه اصلی آروین تبریز">
-            <span>آروین</span>
-            <strong>تبریز</strong>
+            <span class="brand__mark">AT</span>
+            <span>آروین تبریز</span>
         </a>
         <nav class="nav" aria-label="ناوبری اصلی">
             <a href="/">خانه</a>
+            <a href="/#about">درباره ما</a>
             <a href="/#products">محصولات</a>
             <a href="/#services">خدمات</a>
-            <a href="/#contact">تماس</a>
+            <a href="/#gallery">گالری</a>
+            <a href="/#contact">تماس با ما</a>
         </nav>
     </header>
 
@@ -27,7 +29,7 @@
 
     <footer class="site-footer">
         <span>© @DateTime.Now.Year آروین تبریز</span>
-        <span>طراحی شده برای معرفی مدرن توانمندی‌های ریلی شرکت</span>
+        <span>تولید، تأمین، تعمیرات و خدمات تخصصی صنعت ریلی</span>
     </footer>
 
     @await RenderSectionAsync("Scripts", required: false)
