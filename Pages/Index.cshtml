@@ -4,64 +4,59 @@
     ViewData["Title"] = "خانه";
 }
 
-<section class="fullscreen-slider" aria-label="اسلایدر معرفی آروین تبریز">
-    <div class="fullscreen-slider__track">
-        <article class="fullscreen-slider__slide fullscreen-slider__slide--one">
-            <div class="fullscreen-slider__content">
-                <p class="eyebrow">ArvinTabriz.com</p>
-                <h1>وب‌سایت آروین تبریز</h1>
-                <p class="lead">
-                    یک شروع حرفه‌ای، تمام‌صفحه و واکنش‌گرا برای معرفی خدمات و مسیر ارتباط با مشتریان.
-                </p>
-                <div class="hero__actions">
-                    <a class="button button--primary" href="#services">مشاهده خدمات</a>
-                    <a class="button button--secondary" href="#contact">تماس با ما</a>
-                </div>
-            </div>
-        </article>
-        <article class="fullscreen-slider__slide fullscreen-slider__slide--two">
-            <div class="fullscreen-slider__content">
-                <p class="eyebrow">همگام با گیت‌هاب</p>
-                <h2>آماده برای به‌روزرسانی مداوم</h2>
-                <p class="lead">
-                    ساختار پروژه طوری آماده شده که تغییرات پس از کامیت و انتشار، به‌سادگی روی نسخه محلی یا سرور شما همگام شود.
-                </p>
-            </div>
-        </article>
-        <article class="fullscreen-slider__slide fullscreen-slider__slide--three">
-            <div class="fullscreen-slider__content">
-                <p class="eyebrow">تجربه مدرن</p>
-                <h2>نمایش زیبا در موبایل و دسکتاپ</h2>
-                <p class="lead">
-                    اسلایدر بالای صفحه با تصویرسازی گرادیانی، متن فارسی خوانا و حرکت خودکار نمایش داده می‌شود.
-                </p>
-            </div>
-        </article>
+<section class="landing-hero" aria-label="صفحه نخست آروین تبریز">
+    <div class="landing-hero__background" aria-hidden="true">
+        <span class="landing-hero__orb landing-hero__orb--one"></span>
+        <span class="landing-hero__orb landing-hero__orb--two"></span>
+        <span class="landing-hero__grid"></span>
     </div>
-    <div class="fullscreen-slider__dots" aria-hidden="true">
-        <span></span>
-        <span></span>
-        <span></span>
+
+    <div class="landing-hero__content">
+        <p class="eyebrow">Arvin Tabriz</p>
+        <h1>ساخت صفحه اول حرفه‌ای، دقیق و آماده انتشار</h1>
+        <p class="lead">
+            یک لندینگ تمام‌صفحه با چیدمان راست‌به‌چپ، تصویرسازی مدرن، دکمه‌های واضح و بخش‌های کاربردی برای شروع سریع وب‌سایت شما.
+        </p>
+        <div class="hero__actions">
+            <a class="button button--primary" href="#services">مشاهده خدمات</a>
+            <a class="button button--secondary" href="#contact">شروع همکاری</a>
+        </div>
     </div>
+
+    <aside class="landing-hero__preview" aria-label="پیش‌نمایش امکانات صفحه">
+        <div class="preview-card preview-card--main">
+            <span class="preview-card__badge">صفحه اول</span>
+            <h2>طراحی مشابه نمونه شما</h2>
+            <p>ساختار تمیز، رنگ‌بندی یکپارچه و فاصله‌گذاری دقیق برای نمایش حرفه‌ای در موبایل و دسکتاپ.</p>
+        </div>
+        <div class="preview-card preview-card--small">
+            <strong>100%</strong>
+            <span>واکنش‌گرا</span>
+        </div>
+        <div class="preview-card preview-card--small preview-card--accent">
+            <strong>RTL</strong>
+            <span>مناسب فارسی</span>
+        </div>
+    </aside>
 </section>
 
 <section id="services" class="section">
     <div class="section__header">
         <p class="eyebrow">خدمات</p>
-        <h2>آنچه می‌توانید توسعه دهید</h2>
+        <h2>بخش‌های آماده برای صفحه اول</h2>
     </div>
     <div class="cards">
         <article class="card">
-            <h3>طراحی مدرن</h3>
-            <p>رابط کاربری ساده، خوانا و مناسب نمایش در موبایل، تبلت و دسکتاپ.</p>
+            <h3>هدر جذاب</h3>
+            <p>نمایش پیام اصلی سایت همراه با دکمه‌های اقدام و تصویرسازی مدرن.</p>
         </article>
         <article class="card">
-            <h3>معماری قابل توسعه</h3>
-            <p>پایه‌ای سبک با Razor Pages که به‌سادگی برای امکانات بعدی گسترش پیدا می‌کند.</p>
+            <h3>معرفی خدمات</h3>
+            <p>کارت‌های خوانا برای توضیح سریع مزیت‌ها، خدمات یا محصولات شما.</p>
         </article>
         <article class="card">
-            <h3>آماده برای محتوا</h3>
-            <p>بخش‌های اولیه برای معرفی خدمات، مزیت‌ها و راه‌های ارتباطی آماده شده‌اند.</p>
+            <h3>دعوت به تماس</h3>
+            <p>بخش پایانی برای هدایت کاربر به ایمیل، تماس یا مرحله بعدی همکاری.</p>
         </article>
     </div>
 </section>
@@ -69,8 +64,8 @@
 <section id="contact" class="section contact-panel">
     <div>
         <p class="eyebrow">شروع همکاری</p>
-        <h2>برای نسخه بعدی آماده‌ایم</h2>
-        <p>می‌توانید امکاناتی مثل فرم تماس، پنل مدیریت، وبلاگ یا اتصال به دیتابیس را به این ساختار اضافه کنید.</p>
+        <h2>صفحه اول آماده است</h2>
+        <p>اگر نمونه تصویری یا سایت مرجع دارید، می‌توانیم جزئیات رنگ، فونت، چینش و محتوا را دقیق‌تر مطابق همان تنظیم کنیم.</p>
     </div>
     <a class="button button--primary" href="mailto:info@example.com">ارسال ایمیل</a>
 </section>
