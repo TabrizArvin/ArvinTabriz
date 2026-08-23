@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - آروین تبریز</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" asp-page="/Index">آروین تبریز</a>
+        <nav class="nav" aria-label="ناوبری اصلی">
+            <a href="/">خانه</a>
+            <a href="/#services">خدمات</a>
+            <a href="/#contact">تماس</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer">
+        <span>© @DateTime.Now.Year آروین تبریز</span>
+        <span>ساخته شده با ASP.NET Core 10</span>
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
