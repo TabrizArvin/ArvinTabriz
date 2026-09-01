@@ -1,0 +1,16 @@
+@page
+@model LoginModel
+@{
+    ViewData["Title"] = "ورود";
+}
+<section class="admin-login">
+    <p class="eyebrow"><span></span>ناحیه امن</p>
+    <h1>ورود به پنل مدیریت</h1>
+    <p>برای مشاهده و پیگیری درخواست‌های ثبت‌شده وارد شوید.</p>
+    <form method="post">
+        <label>نام کاربری <input asp-for="Input.Username" autocomplete="username" autofocus /></label>
+        <label>رمز عبور <input asp-for="Input.Password" type="password" autocomplete="current-password" /></label>
+        <p class="form-error" asp-validation-summary="ModelOnly"></p>
+        <button class="button button--warm" type="submit">ورود <span>↙</span></button>
+    </form>
+</section>
