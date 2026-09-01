@@ -5,6 +5,7 @@
 }
 
 <section class="fullscreen-slider" aria-labelledby="hero-title">
+    <div class="hero__rail" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
     <div class="slider__track">
         <article class="slide slide--factory">
             <div class="slide__overlay"></div>
@@ -43,7 +44,11 @@
             </div>
         </article>
     </div>
-    <div class="slider__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="slider__dots" aria-label="اسلایدهای معرفی">
+        <span class="is-active"><b>۰۱</b><i></i></span>
+        <span><b>۰۲</b><i></i></span>
+        <span><b>۰۳</b><i></i></span>
+    </div>
     <div class="hero__stats" aria-label="دستاوردهای کلیدی آروین تبریز">
         <div><strong>۱۳۷۲</strong><span>آغاز فعالیت صنعتی</span></div>
         <div><strong>۴۰۰۰+</strong><span>مجموعه بوژی تولیدشده</span></div>
@@ -67,10 +72,10 @@
         <h2>دسته‌بندی محصولات ریلی</h2>
     </div>
     <div class="cards cards--four">
-        <article class="card card--image card--one"><span class="card__icon">01</span><h3>بوژی واگن باری</h3><p>معرفی انواع بوژی، ظرفیت تولید، مشخصات فنی و کاربردها برای ناوگان ریلی.</p></article>
-        <article class="card card--image card--two"><span class="card__icon">02</span><h3>جعبه یاتاقان</h3><p>قطعات حساس واگن همراه با توضیحات فنی، استانداردها و امکان دریافت استعلام.</p></article>
-        <article class="card card--image card--three"><span class="card__icon">03</span><h3>سیستم ترمز</h3><p>مجموعه‌ای از اجزا و تجهیزات مکانیکی مرتبط با ایمنی و بهره‌برداری ناوگان.</p></article>
-        <article class="card card--image card--four"><span class="card__icon">04</span><h3>قطعات لکوموتیو</h3><p>تأمین، ساخت داخل و همکاری با شبکه تأمین‌کنندگان برای پروژه‌های سازمانی.</p></article>
+        <article class="card card--image card--one"><span class="card__icon">01</span><h3>بوژی واگن باری</h3><p>معرفی انواع بوژی، ظرفیت تولید، مشخصات فنی و کاربردها برای ناوگان ریلی.</p><a class="card__link" href="#contact">دریافت مشاوره <span>←</span></a></article>
+        <article class="card card--image card--two"><span class="card__icon">02</span><h3>جعبه یاتاقان</h3><p>قطعات حساس واگن همراه با توضیحات فنی، استانداردها و امکان دریافت استعلام.</p><a class="card__link" href="#contact">دریافت مشاوره <span>←</span></a></article>
+        <article class="card card--image card--three"><span class="card__icon">03</span><h3>سیستم ترمز</h3><p>مجموعه‌ای از اجزا و تجهیزات مکانیکی مرتبط با ایمنی و بهره‌برداری ناوگان.</p><a class="card__link" href="#contact">دریافت مشاوره <span>←</span></a></article>
+        <article class="card card--image card--four"><span class="card__icon">04</span><h3>قطعات لکوموتیو</h3><p>تأمین، ساخت داخل و همکاری با شبکه تأمین‌کنندگان برای پروژه‌های سازمانی.</p><a class="card__link" href="#contact">دریافت مشاوره <span>←</span></a></article>
     </div>
 </section>
 
@@ -95,5 +100,8 @@
 
 <section id="contact" class="section contact-panel">
     <div><p class="eyebrow">تماس با ما</p><h2>برای شروع همکاری آماده‌ایم</h2><p>برای استعلام قیمت، دریافت مشاوره فنی یا ارسال درخواست همکاری با واحد فروش آروین تبریز در ارتباط باشید.</p></div>
-    <a class="button button--primary" href="mailto:info@arvintabriz.com">ارسال ایمیل</a>
+    <div class="contact-panel__actions">
+        <a class="button button--primary" href="mailto:info@arvintabriz.com">ارسال ایمیل</a>
+        <a class="contact-panel__mail" href="mailto:info@arvintabriz.com">info@arvintabriz.com</a>
+    </div>
 </section>
