@@ -4,123 +4,43 @@
     ViewData["Title"] = "خانه";
 }
 
-<section class="fullscreen-slider" aria-labelledby="hero-title">
-    <div class="hero__rail" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-    <div class="slider__track">
-        <article class="slide slide--factory">
-            <div class="slide__overlay"></div>
-            <div class="slide__content">
-                <p class="eyebrow">Arvin Tabriz Industrial Group</p>
-                <h1 id="hero-title">تولیدکننده تجهیزات و قطعات تخصصی صنعت ریلی</h1>
-                <p class="lead">طراحی، تولید، تأمین و بازسازی قطعات ناوگان ریلی با رویکرد کیفیت پایدار، تحویل دقیق و پشتیبانی مهندسی.</p>
-                <div class="hero__actions">
-                    <a class="button button--primary" href="#products">مشاهده محصولات</a>
-                    <a class="button button--secondary" href="#contact">ارتباط با واحد فروش</a>
-                </div>
-            </div>
-        </article>
-        <article class="slide slide--bogie">
-            <div class="slide__overlay"></div>
-            <div class="slide__content">
-                <p class="eyebrow">Railway Bogie & Components</p>
-                <h2>بوژی، جعبه یاتاقان و مجموعه‌های مکانیکی واگن</h2>
-                <p class="lead">معرفی توان ساخت و تأمین قطعات کلیدی واگن‌های باری، لکوموتیو و سیستم‌های ترمز با ساختاری شفاف و حرفه‌ای.</p>
-                <div class="hero__actions">
-                    <a class="button button--primary" href="#services">خدمات مهندسی</a>
-                    <a class="button button--secondary" href="#gallery">گالری تصاویر</a>
-                </div>
-            </div>
-        </article>
-        <article class="slide slide--service">
-            <div class="slide__overlay"></div>
-            <div class="slide__content">
-                <p class="eyebrow">Supply · Repair · Leasing</p>
-                <h2>همراه صنعتی قابل اتکا برای پروژه‌های ریلی</h2>
-                <p class="lead">از مشاوره فنی و تأمین قطعات تا تعمیرات، بازسازی و لیزینگ واگن باری؛ مسیر همکاری را ساده و سریع شروع کنید.</p>
-                <div class="hero__actions">
-                    <a class="button button--primary" href="#contact">درخواست مشاوره</a>
-                    <a class="button button--secondary" href="#about">درباره آروین تبریز</a>
-                </div>
-            </div>
-        </article>
+<section class="hero" aria-labelledby="hero-title">
+    <div class="hero__image" role="img" aria-label="واگن باری در مسیر ریلی"></div>
+    <div class="hero__shade"></div>
+    <div class="hero__line" aria-hidden="true"></div>
+    <div class="hero__content">
+        <p class="eyebrow eyebrow--light"><span></span>گروه صنعتی آروین تبریز</p>
+        <h1 id="hero-title">حرکت رو به جلو<br />با <em>تجربه و دقت</em></h1>
+        <p class="hero__lead">طراحی، تولید و بازسازی تجهیزات تخصصی صنعت ریلی؛ همراهی مطمئن برای ناوگانی ایمن و پایدار.</p>
+        <div class="hero__actions"><a class="button button--warm" href="#products">مشاهده محصولات <span>↙</span></a><a class="button button--outline" href="#about">بیشتر درباره ما</a></div>
     </div>
-    <div class="slider__dots" aria-label="اسلایدهای معرفی">
-        <span class="is-active"><b>۰۱</b><i></i></span>
-        <span><b>۰۲</b><i></i></span>
-        <span><b>۰۳</b><i></i></span>
+    <div class="hero__bottom"><span>SCROLL TO EXPLORE</span><i></i><b>۰۱</b><small>/ ۰۳</small></div>
+    <div class="hero__stamp" aria-hidden="true"><span>EST.</span><b>۱۳۷۲</b><span>INDUSTRIAL<br />GROUP</span></div>
+</section>
+
+<section id="about" class="intro section">
+    <div class="intro__heading"><p class="eyebrow"><span></span>درباره آروین</p><h2>راهکارهای مهندسی،<br /><em>برای صنعت ریلی ایران</em></h2></div>
+    <div class="intro__text"><p>ما در آروین تبریز با تکیه بر تجربه تولیدی، دانش مهندسی و شبکه‌ای پویا از تأمین‌کنندگان، پاسخ‌گوی نیازهای تخصصی صنعت حمل‌ونقل ریلی هستیم.</p><a class="text-link" href="#contact">داستان ما را بشناسید <span>↙</span></a></div>
+</section>
+
+<section class="numbers" aria-label="آمار آروین تبریز">
+    <div><strong>+۳۰</strong><span>سال تجربه صنعتی</span></div><div><strong>+۴۰۰۰</strong><span>مجموعه بوژی تولید شده</span></div><div><strong>۳۶۰°</strong><span>خدمات یکپارچه ریلی</span></div><div><strong>۲۴/۷</strong><span>پاسخ‌گویی به مشتریان</span></div>
+</section>
+
+<section id="products" class="products section">
+    <div class="section-heading"><div><p class="eyebrow"><span></span>توانمندی‌ها</p><h2>محصولات و<br /><em>تجهیزات تخصصی</em></h2></div><a class="circle-link" href="#contact" aria-label="مشاهده همه محصولات">↙</a></div>
+    <div class="product-grid">
+        <article class="product-card product-card--large"><div class="product-card__image"></div><div class="product-card__body"><span>۰۱ / محصولات ریلی</span><h3>بوژی واگن باری</h3><a href="#contact">مشاهده جزئیات <b>↙</b></a></div></article>
+        <article class="product-card"><div class="product-card__image"></div><div class="product-card__body"><span>۰۲ / قطعات مکانیکی</span><h3>جعبه یاتاقان و متعلقات</h3><a href="#contact">مشاهده جزئیات <b>↙</b></a></div></article>
+        <article class="product-card"><div class="product-card__image"></div><div class="product-card__body"><span>۰۳ / سیستم ایمنی</span><h3>مجموعه‌های ترمز</h3><a href="#contact">مشاهده جزئیات <b>↙</b></a></div></article>
     </div>
 </section>
 
-<section class="hero-highlights" aria-label="دستاوردهای کلیدی آروین تبریز">
-    <div><span class="highlight__icon" aria-hidden="true">⌁</span><strong>۱۳۷۲</strong><span>آغاز فعالیت صنعتی</span></div>
-    <div><span class="highlight__icon" aria-hidden="true">◈</span><strong>۴۰۰۰+</strong><span>مجموعه بوژی تولیدشده</span></div>
-    <div><span class="highlight__icon" aria-hidden="true">✓</span><strong>TSI</strong><span>نگاه استاندارد محور</span></div>
+<section id="services" class="services section">
+    <div class="services__visual"><div><span>CREATED FOR</span><b>MOTION</b></div></div>
+    <div class="services__content"><p class="eyebrow eyebrow--light"><span></span>خدمات ما</p><h2>در کنار شما،<br /><em>از ایده تا حرکت</em></h2><p>از مشاوره فنی و تأمین قطعات تا تعمیرات و بازسازی، تیم آروین در تمام مراحل پروژه همراه شماست.</p><div class="service-list"><a href="#contact"><b>۰۱</b><span>تعمیرات و بازسازی</span><i>↙</i></a><a href="#contact"><b>۰۲</b><span>تأمین و ساخت قطعات</span><i>↙</i></a><a href="#contact"><b>۰۳</b><span>لیزینگ واگن باری</span><i>↙</i></a></div></div>
 </section>
 
-<section id="about" class="section intro-grid" aria-labelledby="about-title">
-    <div>
-        <p class="eyebrow">درباره شرکت</p>
-        <h2 id="about-title">چهره‌ای نزدیک‌تر به یک برند صنعتی باسابقه</h2>
-    </div>
-    <p>
-        ساختار تازه با الهام از فضای کارخانه، خطوط تولید، رنگ‌های سازمانی صنعتی و منوهای کاربردی طراحی شده است تا مخاطب در همان نگاه اول به محصولات، خدمات، پروژه‌ها، گواهینامه‌ها و مسیر تماس دسترسی داشته باشد.
-    </p>
-</section>
+<section id="gallery" class="projects section"><div class="section-heading"><div><p class="eyebrow"><span></span>پروژه‌ها و کیفیت</p><h2>آنچه با هم<br /><em>به حرکت درآوردیم</em></h2></div><p>کیفیت، دقت و تعهد به زمان‌بندی، پایه‌های هر همکاری موفق در آروین تبریز هستند.</p></div><div class="project-grid"><div class="project project--one"><span>پروژه‌های تولیدی</span></div><div class="project project--two"><span>بازسازی تخصصی</span></div><div class="project project--three"><span>تأمین تجهیزات</span></div></div></section>
 
-<section id="products" class="section">
-    <div class="section__header">
-        <p class="eyebrow">محصولات</p>
-        <h2>دسته‌بندی محصولات ریلی</h2>
-    </div>
-    <div class="cards cards--four">
-        <article class="card card--image card--one"><span class="card__icon">01</span><h3>بوژی واگن باری</h3><p>معرفی انواع بوژی، ظرفیت تولید، مشخصات فنی و کاربردها برای ناوگان ریلی.</p><a class="card__link" href="#contact">دریافت مشاوره <span>←</span></a></article>
-        <article class="card card--image card--two"><span class="card__icon">02</span><h3>جعبه یاتاقان</h3><p>قطعات حساس واگن همراه با توضیحات فنی، استانداردها و امکان دریافت استعلام.</p><a class="card__link" href="#contact">دریافت مشاوره <span>←</span></a></article>
-        <article class="card card--image card--three"><span class="card__icon">03</span><h3>سیستم ترمز</h3><p>مجموعه‌ای از اجزا و تجهیزات مکانیکی مرتبط با ایمنی و بهره‌برداری ناوگان.</p><a class="card__link" href="#contact">دریافت مشاوره <span>←</span></a></article>
-        <article class="card card--image card--four"><span class="card__icon">04</span><h3>قطعات لکوموتیو</h3><p>تأمین، ساخت داخل و همکاری با شبکه تأمین‌کنندگان برای پروژه‌های سازمانی.</p><a class="card__link" href="#contact">دریافت مشاوره <span>←</span></a></article>
-    </div>
-</section>
-
-<section id="services" class="section section--dark">
-    <div class="section__header"><p class="eyebrow">خدمات</p><h2>خدمات مهندسی و بازرگانی</h2></div>
-    <div class="service-list">
-        <article><h3>تعمیرات و بازسازی</h3><p>بازسازی بوژی، قطعات کلیدی و مجموعه‌های مکانیکی با کنترل کیفیت مرحله‌ای.</p></article>
-        <article><h3>تأمین قطعات</h3><p>تأمین قطعات ریلی، واردات هدفمند و توسعه ساخت داخل برای نیازهای ناوگان.</p></article>
-        <article><h3>لیزینگ واگن باری</h3><p>معرفی مدل همکاری، مزایا و مسیر ثبت درخواست برای شرکت‌های حمل‌ونقل ریلی.</p></article>
-    </div>
-</section>
-
-<section id="gallery" class="section gallery" aria-labelledby="gallery-title">
-    <div class="section__header"><p class="eyebrow">گالری</p><h2 id="gallery-title">نمای تصویری از فضای صنعتی سایت</h2></div>
-    <div class="gallery__grid"><div></div><div></div><div></div></div>
-</section>
-
-<section class="section trust-section" aria-labelledby="trust-title">
-    <div class="section__header trust-section__header">
-        <p class="eyebrow">اعتبار و کیفیت</p>
-        <h2 id="trust-title">اطمینان در هر مرحله از همکاری</h2>
-        <p>از انتخاب مواد اولیه تا تحویل نهایی، مسیر تولید و پشتیبانی ما بر پایه کنترل کیفیت، مستندسازی و پاسخ‌گویی فنی طراحی شده است.</p>
-    </div>
-    <div class="trust-grid">
-        <article class="trust-card"><span class="trust-card__number">۰۱</span><span class="trust-card__icon" aria-hidden="true">⌘</span><h3>کنترل کیفیت مرحله‌ای</h3><p>بازرسی ابعادی و کنترل فرآیند در ایستگاه‌های کلیدی تولید، برای اطمینان از عملکرد مطمئن قطعه.</p></article>
-        <article class="trust-card"><span class="trust-card__number">۰۲</span><span class="trust-card__icon" aria-hidden="true">◌</span><h3>مستندات فنی شفاف</h3><p>مشخصات، سوابق ساخت و گزارش‌های مورد نیاز پروژه، منظم و قابل پیگیری در اختیار کارفرما قرار می‌گیرد.</p></article>
-        <article class="trust-card"><span class="trust-card__number">۰۳</span><span class="trust-card__icon" aria-hidden="true">↗</span><h3>پاسخ‌گویی مهندسی</h3><p>تیم فنی از مرحله استعلام تا خدمات پس از تحویل، در کنار واحدهای بهره‌بردار و تعمیرات است.</p></article>
-    </div>
-</section>
-
-<section class="section credentials" aria-labelledby="credentials-title">
-    <div class="credentials__copy"><p class="eyebrow">همکاری قابل اتکا</p><h2 id="credentials-title">کیفیت، زمان‌بندی و همراهی؛ سه تعهد ما</h2><p>با ترکیب تجربه تولیدی و شناخت نیاز ناوگان، راهکاری متناسب با الزامات فنی و برنامه اجرایی هر پروژه ارائه می‌کنیم.</p><a class="text-link" href="#contact">گفت‌وگو با کارشناسان فروش <span>←</span></a></div>
-    <div class="credentials__items">
-        <div><strong>+۳۰</strong><span>سال تجربه در صنعت</span></div>
-        <div><strong>۳۶۰°</strong><span>از تأمین تا بازسازی</span></div>
-        <div><strong>۱۰۰٪</strong><span>تمرکز بر نیاز پروژه</span></div>
-        <div><strong>۲۴/۷</strong><span>پاسخ‌گویی به استعلام</span></div>
-    </div>
-</section>
-
-<section id="contact" class="section contact-panel">
-    <div><p class="eyebrow">تماس با ما</p><h2>برای شروع همکاری آماده‌ایم</h2><p>برای استعلام قیمت، دریافت مشاوره فنی یا ارسال درخواست همکاری با واحد فروش آروین تبریز در ارتباط باشید.</p></div>
-    <div class="contact-panel__actions">
-        <a class="button button--primary" href="mailto:info@arvintabriz.com">ارسال ایمیل</a>
-        <a class="contact-panel__mail" href="mailto:info@arvintabriz.com">info@arvintabriz.com</a>
-    </div>
-</section>
+<section id="contact" class="contact"><p class="eyebrow eyebrow--light"><span></span>آغاز یک همکاری</p><h2>برای پروژه بعدی‌تان<br />کنارتان <em>هستیم.</em></h2><a class="button button--warm" href="mailto:info@arvintabriz.com">شروع گفت‌وگو <span>↙</span></a><a class="contact__mail" href="mailto:info@arvintabriz.com">info@arvintabriz.com</a></section>

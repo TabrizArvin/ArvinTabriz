@@ -9,18 +9,20 @@
 </head>
 <body>
     <header class="site-header">
-        <a class="brand" asp-page="/Index" aria-label="صفحه اصلی آروین تبریز">
-            <span class="brand__mark">AT</span>
-            <span>آروین تبریز</span>
-        </a>
-        <nav class="nav" aria-label="ناوبری اصلی">
-            <a href="/">خانه</a>
-            <a href="/#about">درباره ما</a>
-            <a href="/#products">محصولات</a>
-            <a href="/#services">خدمات</a>
-            <a href="/#gallery">گالری</a>
-            <a href="/#contact">تماس با ما</a>
-        </nav>
+        <div class="header__inner">
+            <a class="brand" asp-page="/Index" aria-label="صفحه اصلی آروین تبریز">
+                <span class="brand__mark" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="brand__copy"><b>آروین تبریز</b><small>گروه صنعتی آروین</small></span>
+            </a>
+            <nav class="nav" aria-label="ناوبری اصلی">
+                <a class="is-active" href="/">خانه</a>
+                <a href="/#about">درباره ما</a>
+                <a href="/#products">محصولات</a>
+                <a href="/#services">خدمات ما</a>
+                <a href="/#gallery">پروژه‌ها</a>
+            </nav>
+            <a class="header__contact" href="/#contact"><span>تماس با ما</span><b aria-hidden="true">↙</b></a>
+        </div>
     </header>
 
     <main class="main">
@@ -28,8 +30,8 @@
     </main>
 
     <footer class="site-footer">
-        <span>© @DateTime.Now.Year آروین تبریز</span>
-        <span>تولید، تأمین، تعمیرات و خدمات تخصصی صنعت ریلی</span>
+        <div class="site-footer__brand"><span class="brand__mark" aria-hidden="true"><i></i><i></i><i></i></span><div><b>آروین تبریز</b><span>راهکارهای مهندسی برای حرکت فردا</span></div></div>
+        <span>© @DateTime.Now.Year تمامی حقوق محفوظ است.</span>
     </footer>
 
     @await RenderSectionAsync("Scripts", required: false)
