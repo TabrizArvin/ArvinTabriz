@@ -1,10 +1,10 @@
 # ArvinTabriz
 
-یک وب‌سایت شروعی راست‌به‌چپ با ASP.NET Core 10 و Razor Pages.
+یک وب‌سایت شروعی راست‌به‌چپ با ASP.NET Core 8 و Razor Pages.
 
 ## پیش‌نیازها
 
-- .NET 10 SDK
+- .NET 8 SDK
 
 ## اجرا
 
