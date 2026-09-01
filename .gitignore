@@ -10,3 +10,5 @@ obj/
 .vs/
 *.user
 *.suo
+
+App_Data/contact-messages.json

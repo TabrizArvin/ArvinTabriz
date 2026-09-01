@@ -47,4 +47,16 @@
 
 <section id="gallery" class="projects section"><div class="section-heading"><div><p class="eyebrow"><span></span>پروژه‌ها و کیفیت</p><h2>آنچه با هم<br /><em>به حرکت درآوردیم</em></h2></div><p>کیفیت، دقت و تعهد به زمان‌بندی، پایه‌های هر همکاری موفق در آروین تبریز هستند.</p></div><div class="project-grid"><div class="project project--one"><span>پروژه‌های تولیدی</span></div><div class="project project--two"><span>بازسازی تخصصی</span></div><div class="project project--three"><span>تأمین تجهیزات</span></div></div></section>
 
-<section id="contact" class="contact"><p class="eyebrow eyebrow--light"><span></span>آغاز یک همکاری</p><h2>برای پروژه بعدی‌تان<br />کنارتان <em>هستیم.</em></h2><a class="button button--warm" href="mailto:info@arvintabriz.com">شروع گفت‌وگو <span>↙</span></a><a class="contact__mail" href="mailto:info@arvintabriz.com">info@arvintabriz.com</a></section>
+<section id="contact" class="contact"><p class="eyebrow eyebrow--light"><span></span>آغاز یک همکاری</p><h2>برای پروژه بعدی‌تان<br />کنارتان <em>هستیم.</em></h2><p class="contact__intro">اطلاعات پروژه‌تان را بفرستید؛ تیم آروین در اولین فرصت با شما تماس می‌گیرد.</p>
+    @if (Model.IsSubmitted)
+    {
+        <p class="contact__success" role="status">پیام شما ثبت شد. سپاس از تماس‌تان.</p>
+    }
+    <form class="contact-form" method="post" asp-page-handler="Contact">
+        <div class="contact-form__row"><input asp-for="Contact.Name" placeholder="نام و نام خانوادگی" autocomplete="name" /><input asp-for="Contact.Phone" placeholder="شماره تماس" autocomplete="tel" /></div>
+        <input asp-for="Contact.Email" placeholder="ایمیل (اختیاری)" autocomplete="email" />
+        <textarea asp-for="Contact.Message" rows="4" placeholder="کمی درباره نیاز یا پروژه‌تان بنویسید"></textarea>
+        <span asp-validation-for="Contact.Name"></span><span asp-validation-for="Contact.Phone"></span><span asp-validation-for="Contact.Message"></span>
+        <button class="button button--warm" type="submit">ارسال درخواست <span>↙</span></button>
+    </form>
+    <a class="contact__mail" href="mailto:info@arvintabriz.com">info@arvintabriz.com</a></section>

@@ -1,0 +1,13 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "داشبورد";
+}
+<section class="admin-dashboard">
+    <div class="admin-dashboard__heading"><div><p class="eyebrow"><span></span>نمای کلی</p><h1>داشبورد مدیریت</h1><p>درخواست‌های ثبت‌شده از وب‌سایت را از اینجا پیگیری کنید.</p></div><a class="admin-view-site" asp-page="/Index">مشاهده وب‌سایت ↙</a></div>
+    <div class="admin-stats"><article><strong>@Model.TotalCount</strong><span>کل درخواست‌ها</span></article><article><strong>@Model.NewCount</strong><span>درخواست جدید</span></article><article><strong>@Model.InProgressCount</strong><span>در حال پیگیری</span></article><article><strong>@Model.ClosedCount</strong><span>بسته‌شده</span></article></div>
+    <div class="admin-requests"><div class="admin-requests__title"><h2>درخواست‌ها</h2><span>@Model.Messages.Count مورد</span></div>
+    @if (Model.Messages.Count == 0) { <p class="admin-empty">هنوز درخواستی از فرم تماس ثبت نشده است.</p> }
+    else { <div class="admin-table-wrap"><table><thead><tr><th>مخاطب</th><th>پیام</th><th>زمان ثبت</th><th>وضعیت</th><th>عملیات</th></tr></thead><tbody>@foreach (var message in Model.Messages) { <tr><td><strong>@message.Name</strong><a href="tel:@message.Phone">@message.Phone</a>@if (!string.IsNullOrWhiteSpace(message.Email)) { <a href="mailto:@message.Email">@message.Email</a> }</td><td class="admin-message">@message.Message</td><td>@message.SubmittedAtUtc.ToLocalTime().ToString("yyyy/MM/dd HH:mm")</td><td><span class="status status--@message.Status.ToString().ToLowerInvariant()">@Model.StatusLabel(message.Status)</span></td><td><form method="post" asp-page-handler="Status"><input type="hidden" name="id" value="@message.Id" /><select name="status" aria-label="وضعیت @message.Name">@foreach (var status in Enum.GetValues<ContactMessageStatus>()) { if (status == message.Status) { <option value="@status" selected>@Model.StatusLabel(status)</option> } else { <option value="@status">@Model.StatusLabel(status)</option> } }</select><button type="submit">ثبت</button></form></td></tr> }</tbody></table></div> }
+    </div>
+</section>
