@@ -6,7 +6,7 @@
     <title>@ViewData["Title"] - مدیریت آروین تبریز</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
-<body class="admin-body">
+<body class="admin-body @ViewData["BodyClass"]">
     <header class="admin-header"><a asp-page="/Admin/Index" class="admin-brand">آروین تبریز <span>پنل مدیریت</span></a>@if (User.Identity?.IsAuthenticated == true) { <form method="post" asp-page="/Admin/Logout"><button type="submit">خروج از حساب</button></form> }</header>
     <main class="admin-main">@RenderBody()</main>
 </body>
