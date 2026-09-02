@@ -163,7 +163,13 @@ a {
     background-size: cover;
     filter: grayscale(.28);
     opacity: 0;
-    animation: heroSlide 18s infinite
+    transform: scale(1.04);
+    transition: opacity .8s ease, transform 6s linear
+}
+
+.hero__slide.is-active {
+    opacity: 1;
+    transform: scale(1)
 }
 
 .hero__slide--factory {
@@ -171,28 +177,11 @@ a {
 }
 
 .hero__slide--bogie {
-    background-image: url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=2000&q=90');
-    animation-delay: 6s
+    background-image: url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=2000&q=90')
 }
 
 .hero__slide--service {
-    background-image: url('https://images.unsplash.com/photo-1581092921461-39b9d08a9b21?auto=format&fit=crop&w=2000&q=90');
-    animation-delay: 12s
-}
-
-@keyframes heroSlide {
-
-    0%,
-    29% {
-        opacity: 1;
-        transform: scale(1)
-    }
-
-    33%,
-    100% {
-        opacity: 0;
-        transform: scale(1.04)
-    }
+    background-image: url('https://images.unsplash.com/photo-1581092921461-39b9d08a9b21?auto=format&fit=crop&w=2000&q=90')
 }
 
 .hero__shade {
@@ -725,7 +714,7 @@ h2 em {
 
 @media(prefers-reduced-motion:reduce) {
     .hero__slide {
-        animation: none
+        transition: none
     }
 
     .hero__slide--factory {
