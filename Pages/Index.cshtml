@@ -18,31 +18,71 @@
         <p class="hero__lead">طراحی، تولید و بازسازی تجهیزات تخصصی صنعت ریلی؛ همراهی مطمئن برای ناوگانی ایمن و پایدار.</p>
         <div class="hero__actions"><a class="button button--warm" href="#products">مشاهده محصولات <span>↙</span></a><a class="button button--outline" href="#about">بیشتر درباره ما</a></div>
     </div>
-    <div class="hero__bottom" aria-label="اسلایدهای معرفی"><span>SCROLL TO EXPLORE</span><i></i><b data-slide-current aria-live="polite">۰۱</b><small>/ ۰۳</small></div>
+    <div class="hero__bottom" aria-label="اسلایدهای معرفی">
+        <span>SCROLL TO EXPLORE</span><i></i><b data-slide-current aria-live="polite">۰۱</b><small>/ ۰۳</small>
+        <div class="hero__controls" aria-label="کنترل اسلایدر">
+            <button type="button" data-slide-previous aria-label="اسلاید قبلی">←</button>
+            <button type="button" data-slide-next aria-label="اسلاید بعدی">→</button>
+        </div>
+    </div>
     <div class="hero__stamp" aria-hidden="true"><span>EST.</span><b>۱۳۷۲</b><span>INDUSTRIAL<br />GROUP</span></div>
 </section>
 
 @section Scripts {
     <script>
         (() => {
-            const slides = document.querySelectorAll('.hero__slide');
+            const hero = document.querySelector('.hero');
+            const slides = Array.from(document.querySelectorAll('.hero__slide'));
             const currentSlide = document.querySelector('[data-slide-current]');
+            const previousButton = document.querySelector('[data-slide-previous]');
+            const nextButton = document.querySelector('[data-slide-next]');
 
-            if (slides.length === 0 || !currentSlide || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            if (!hero || slides.length === 0 || !currentSlide) {
                 return;
             }
 
-            let activeIndex = 0;
+            let activeIndex = Math.max(slides.findIndex((slide) => slide.classList.contains('is-active')), 0);
+            let intervalId;
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
             const persianNumbers = ['۰۱', '۰۲', '۰۳'];
 
-            slides[activeIndex].classList.add('is-active');
-
-            window.setInterval(() => {
-                slides[activeIndex].classList.remove('is-active');
-                activeIndex = (activeIndex + 1) % slides.length;
-                slides[activeIndex].classList.add('is-active');
+            const showSlide = (index) => {
+                activeIndex = (index + slides.length) % slides.length;
+                slides.forEach((slide, slideIndex) => {
+                    slide.classList.toggle('is-active', slideIndex === activeIndex);
+                });
                 currentSlide.textContent = persianNumbers[activeIndex] ?? String(activeIndex + 1).padStart(2, '0');
-            }, 6000);
+            };
+
+            const stopAutoplay = () => {
+                window.clearInterval(intervalId);
+                intervalId = undefined;
+            };
+
+            const startAutoplay = () => {
+                stopAutoplay();
+                if (!reducedMotion.matches) {
+                    intervalId = window.setInterval(() => showSlide(activeIndex + 1), 6000);
+                }
+            };
+
+            previousButton?.addEventListener('click', () => {
+                showSlide(activeIndex - 1);
+                startAutoplay();
+            });
+            nextButton?.addEventListener('click', () => {
+                showSlide(activeIndex + 1);
+                startAutoplay();
+            });
+            hero.addEventListener('mouseenter', stopAutoplay);
+            hero.addEventListener('mouseleave', startAutoplay);
+            hero.addEventListener('focusin', stopAutoplay);
+            hero.addEventListener('focusout', startAutoplay);
+            document.addEventListener('visibilitychange', () => document.hidden ? stopAutoplay() : startAutoplay());
+            reducedMotion.addEventListener('change', startAutoplay);
+
+            showSlide(activeIndex);
+            startAutoplay();
         })();
     </script>
 }
