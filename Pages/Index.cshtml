@@ -6,7 +6,7 @@
 
 <section class="hero" aria-labelledby="hero-title">
     <div class="hero__slider" role="img" aria-label="تصاویر فعالیت‌ها و تجهیزات ریلی آروین تبریز">
-        <div class="hero__slide hero__slide--factory"></div>
+        <div class="hero__slide hero__slide--factory is-active"></div>
         <div class="hero__slide hero__slide--bogie"></div>
         <div class="hero__slide hero__slide--service"></div>
     </div>
@@ -18,9 +18,34 @@
         <p class="hero__lead">طراحی، تولید و بازسازی تجهیزات تخصصی صنعت ریلی؛ همراهی مطمئن برای ناوگانی ایمن و پایدار.</p>
         <div class="hero__actions"><a class="button button--warm" href="#products">مشاهده محصولات <span>↙</span></a><a class="button button--outline" href="#about">بیشتر درباره ما</a></div>
     </div>
-    <div class="hero__bottom" aria-label="اسلایدهای معرفی"><span>SCROLL TO EXPLORE</span><i></i><b>۰۱</b><small>/ ۰۳</small></div>
+    <div class="hero__bottom" aria-label="اسلایدهای معرفی"><span>SCROLL TO EXPLORE</span><i></i><b data-slide-current aria-live="polite">۰۱</b><small>/ ۰۳</small></div>
     <div class="hero__stamp" aria-hidden="true"><span>EST.</span><b>۱۳۷۲</b><span>INDUSTRIAL<br />GROUP</span></div>
 </section>
+
+@section Scripts {
+    <script>
+        (() => {
+            const slides = document.querySelectorAll('.hero__slide');
+            const currentSlide = document.querySelector('[data-slide-current]');
+
+            if (slides.length === 0 || !currentSlide || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
+
+            let activeIndex = 0;
+            const persianNumbers = ['۰۱', '۰۲', '۰۳'];
+
+            slides[activeIndex].classList.add('is-active');
+
+            window.setInterval(() => {
+                slides[activeIndex].classList.remove('is-active');
+                activeIndex = (activeIndex + 1) % slides.length;
+                slides[activeIndex].classList.add('is-active');
+                currentSlide.textContent = persianNumbers[activeIndex] ?? String(activeIndex + 1).padStart(2, '0');
+            }, 6000);
+        })();
+    </script>
+}
 
 <section id="about" class="intro section">
     <div class="intro__heading"><p class="eyebrow"><span></span>درباره آروین</p><h2>راهکارهای مهندسی،<br /><em>برای صنعت ریلی ایران</em></h2></div>
