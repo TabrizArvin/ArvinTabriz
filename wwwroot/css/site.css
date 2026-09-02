@@ -320,6 +320,33 @@ h2 em {
     opacity: .6
 }
 
+.hero__controls {
+    display: flex;
+    gap: 6px;
+    margin-right: 8px
+}
+
+.hero__controls button {
+    width: 29px;
+    height: 29px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, .55);
+    border-radius: 50%;
+    background: rgba(24, 46, 37, .25);
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    line-height: 1;
+    transition: background .2s, color .2s
+}
+
+.hero__controls button:hover,
+.hero__controls button:focus-visible {
+    background: #fff;
+    color: var(--forest);
+    outline: none
+}
+
 .hero__stamp {
     position: absolute;
     left: max(30px, calc((100% - 1320px)/2));
@@ -715,10 +742,6 @@ h2 em {
 @media(prefers-reduced-motion:reduce) {
     .hero__slide {
         transition: none
-    }
-
-    .hero__slide--factory {
-        opacity: 1
     }
 }
 
