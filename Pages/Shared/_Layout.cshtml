@@ -15,16 +15,10 @@
                 <span class="brand__copy"><b>آروین تبریز</b><small>گروه صنعتی آروین</small></span>
             </a>
             <div class="header__navigation" data-site-navigation>
-                <nav class="nav" id="site-navigation" aria-label="ناوبری اصلی">
-                    <a class="is-active" href="/">خانه</a>
-                    <a href="/#about">درباره ما</a>
-                    <a href="/#products">محصولات</a>
-                    <a href="/#services">خدمات ما</a>
-                    <a href="/#gallery">پروژه‌ها</a>
-                </nav>
+                @await Html.PartialAsync("_MainNavigation")
                 <a class="header__contact" href="/#contact"><span>تماس با ما</span><b aria-hidden="true">↙</b></a>
             </div>
-            <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-navigation">
+            <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-navigation" aria-label="منوی اصلی">
                 <span></span><span></span><span></span>
                 <b class="sr-only">باز کردن منو</b>
             </button>
@@ -47,6 +41,7 @@
             const header = document.querySelector('[data-site-header]');
             const menuToggle = document.querySelector('[data-menu-toggle]');
             const navigation = document.querySelector('[data-site-navigation]');
+            const submenuToggles = Array.from(navigation?.querySelectorAll('[data-submenu-toggle]') ?? []);
 
             if (!header) {
                 return;
@@ -56,9 +51,32 @@
                 header.classList.toggle('is-scrolled', window.scrollY > 24);
             };
 
+            const setSubmenuState = (toggle, isOpen) => {
+                const item = toggle.closest('.nav-item--has-children');
+
+                if (!item) {
+                    return;
+                }
+
+                item.classList.toggle('is-open', isOpen);
+                toggle.setAttribute('aria-expanded', String(isOpen));
+
+                if (!isOpen) {
+                    item.querySelectorAll('[data-submenu-toggle]').forEach((childToggle) => {
+                        childToggle.setAttribute('aria-expanded', 'false');
+                        childToggle.closest('.nav-item--has-children')?.classList.remove('is-open');
+                    });
+                }
+            };
+
+            const closeSubmenus = () => {
+                submenuToggles.forEach((toggle) => setSubmenuState(toggle, false));
+            };
+
             const closeMenu = () => {
                 header.classList.remove('is-menu-open');
                 menuToggle?.setAttribute('aria-expanded', 'false');
+                closeSubmenus();
             };
 
             syncHeader();
@@ -67,9 +85,50 @@
             menuToggle?.addEventListener('click', () => {
                 const isOpen = header.classList.toggle('is-menu-open');
                 menuToggle.setAttribute('aria-expanded', String(isOpen));
+                if (!isOpen) {
+                    closeSubmenus();
+                }
             });
 
-            navigation?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+            submenuToggles.forEach((toggle) => {
+                toggle.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    const item = toggle.closest('.nav-item--has-children');
+                    const isOpen = !item?.classList.contains('is-open');
+
+                    if (!item) {
+                        return;
+                    }
+
+                    item.parentElement?.querySelectorAll(':scope > .nav-item--has-children.is-open').forEach((openItem) => {
+                        if (openItem !== item) {
+                            const openToggle = openItem.querySelector(':scope > .nav-item__top [data-submenu-toggle]');
+                            if (openToggle) {
+                                setSubmenuState(openToggle, false);
+                            }
+                        }
+                    });
+
+                    setSubmenuState(toggle, isOpen);
+                });
+            });
+
+            navigation?.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', (event) => {
+                    const item = link.closest('.nav-item--has-children');
+                    const toggle = item?.querySelector(':scope > .nav-item__top > [data-submenu-toggle]');
+
+                    if (link.getAttribute('href') === '#' && toggle) {
+                        event.preventDefault();
+                        toggle.click();
+                        return;
+                    }
+
+                    closeMenu();
+                });
+            });
             document.addEventListener('keydown', (event) => {
                 if (event.key === 'Escape') {
                     closeMenu();
