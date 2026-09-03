@@ -8,20 +8,26 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
-    <header class="site-header">
+    <header class="site-header" data-site-header>
         <div class="header__inner">
             <a class="brand" asp-page="/Index" aria-label="صفحه اصلی آروین تبریز">
                 <span class="brand__mark" aria-hidden="true"><i></i><i></i><i></i></span>
                 <span class="brand__copy"><b>آروین تبریز</b><small>گروه صنعتی آروین</small></span>
             </a>
-            <nav class="nav" aria-label="ناوبری اصلی">
-                <a class="is-active" href="/">خانه</a>
-                <a href="/#about">درباره ما</a>
-                <a href="/#products">محصولات</a>
-                <a href="/#services">خدمات ما</a>
-                <a href="/#gallery">پروژه‌ها</a>
-            </nav>
-            <a class="header__contact" href="/#contact"><span>تماس با ما</span><b aria-hidden="true">↙</b></a>
+            <div class="header__navigation" data-site-navigation>
+                <nav class="nav" id="site-navigation" aria-label="ناوبری اصلی">
+                    <a class="is-active" href="/">خانه</a>
+                    <a href="/#about">درباره ما</a>
+                    <a href="/#products">محصولات</a>
+                    <a href="/#services">خدمات ما</a>
+                    <a href="/#gallery">پروژه‌ها</a>
+                </nav>
+                <a class="header__contact" href="/#contact"><span>تماس با ما</span><b aria-hidden="true">↙</b></a>
+            </div>
+            <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-navigation">
+                <span></span><span></span><span></span>
+                <b class="sr-only">باز کردن منو</b>
+            </button>
         </div>
     </header>
 
@@ -35,5 +41,46 @@
     </footer>
 
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        (() => {
+            const header = document.querySelector('[data-site-header]');
+            const menuToggle = document.querySelector('[data-menu-toggle]');
+            const navigation = document.querySelector('[data-site-navigation]');
+
+            if (!header) {
+                return;
+            }
+
+            const syncHeader = () => {
+                header.classList.toggle('is-scrolled', window.scrollY > 24);
+            };
+
+            const closeMenu = () => {
+                header.classList.remove('is-menu-open');
+                menuToggle?.setAttribute('aria-expanded', 'false');
+            };
+
+            syncHeader();
+            window.addEventListener('scroll', syncHeader, { passive: true });
+
+            menuToggle?.addEventListener('click', () => {
+                const isOpen = header.classList.toggle('is-menu-open');
+                menuToggle.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            navigation?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeMenu();
+                }
+            });
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 850) {
+                    closeMenu();
+                }
+            });
+        })();
+    </script>
 </body>
 </html>

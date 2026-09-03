@@ -19,7 +19,7 @@
         <div class="hero__actions"><a class="button button--warm" href="#products">مشاهده محصولات <span>↙</span></a><a class="button button--outline" href="#about">بیشتر درباره ما</a></div>
     </div>
     <div class="hero__bottom" aria-label="اسلایدهای معرفی">
-        <span>SCROLL TO EXPLORE</span><i></i><b data-slide-current aria-live="polite">۰۱</b><small>/ ۰۳</small>
+        <a class="hero__scroll" href="#about" aria-label="رفتن به بخش درباره آروین"><span>SCROLL TO EXPLORE</span><i aria-hidden="true"></i></a><b data-slide-current aria-live="polite">۰۱</b><small>/ ۰۳</small>
         <div class="hero__controls" aria-label="کنترل اسلایدر">
             <button type="button" data-slide-previous aria-label="اسلاید قبلی">←</button>
             <button type="button" data-slide-next aria-label="اسلاید بعدی">→</button>
@@ -114,9 +114,12 @@
         <p class="contact__success" role="status">پیام شما ثبت شد. سپاس از تماس‌تان.</p>
     }
     <form class="contact-form" method="post" asp-page-handler="Contact">
-        <div class="contact-form__row"><input asp-for="Contact.Name" placeholder="نام و نام خانوادگی" autocomplete="name" /><input asp-for="Contact.Phone" placeholder="شماره تماس" autocomplete="tel" /></div>
-        <input asp-for="Contact.Email" placeholder="ایمیل (اختیاری)" autocomplete="email" />
-        <textarea asp-for="Contact.Message" rows="4" placeholder="کمی درباره نیاز یا پروژه‌تان بنویسید"></textarea>
+        <div class="contact-form__row">
+            <div><label class="sr-only" asp-for="Contact.Name">نام و نام خانوادگی</label><input asp-for="Contact.Name" placeholder="نام و نام خانوادگی" autocomplete="name" /></div>
+            <div><label class="sr-only" asp-for="Contact.Phone">شماره تماس</label><input asp-for="Contact.Phone" placeholder="شماره تماس" autocomplete="tel" /></div>
+        </div>
+        <div><label class="sr-only" asp-for="Contact.Email">ایمیل</label><input asp-for="Contact.Email" placeholder="ایمیل (اختیاری)" autocomplete="email" /></div>
+        <div><label class="sr-only" asp-for="Contact.Message">شرح نیاز یا پروژه</label><textarea asp-for="Contact.Message" rows="4" placeholder="کمی درباره نیاز یا پروژه‌تان بنویسید"></textarea></div>
         <span asp-validation-for="Contact.Name"></span><span asp-validation-for="Contact.Phone"></span><span asp-validation-for="Contact.Message"></span>
         <button class="button button--warm" type="submit">ارسال درخواست <span>↙</span></button>
     </form>
