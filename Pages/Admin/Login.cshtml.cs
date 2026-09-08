@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Security.Cryptography;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -26,9 +27,9 @@ public class LoginModel(IConfiguration configuration) : PageModel
 
         var username = configuration["Admin:Username"];
         var password = configuration["Admin:Password"];
-        if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || password == "change-this-password" ||
-            !string.Equals(Input.Username, username, StringComparison.Ordinal) ||
-            !string.Equals(Input.Password, password, StringComparison.Ordinal))
+        if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) ||
+            !FixedTimeEquals(Input.Username, username) ||
+            !FixedTimeEquals(Input.Password, password))
         {
             ModelState.AddModelError(string.Empty, "نام کاربری یا رمز عبور صحیح نیست.");
             return Page();
@@ -37,6 +38,14 @@ public class LoginModel(IConfiguration configuration) : PageModel
         var identity = new ClaimsIdentity([new Claim(ClaimTypes.Name, username)], CookieAuthenticationDefaults.AuthenticationScheme);
         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
         return RedirectToPage("Index");
+    }
+
+    private static bool FixedTimeEquals(string left, string right)
+    {
+        var leftBytes = System.Text.Encoding.UTF8.GetBytes(left);
+        var rightBytes = System.Text.Encoding.UTF8.GetBytes(right);
+        return leftBytes.Length == rightBytes.Length &&
+               CryptographicOperations.FixedTimeEquals(leftBytes, rightBytes);
     }
 
     public class LoginInput
