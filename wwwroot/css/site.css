@@ -422,6 +422,26 @@ textarea {
     letter-spacing: .04em
 }
 
+.header__language {
+    flex: 0 0 auto;
+    margin-inline-start: 8px;
+    direction: ltr;
+    font-size: .72rem;
+    opacity: .78;
+    transition: opacity .2s, color .2s
+}
+
+.header__language:hover,
+.header__language:focus-visible {
+    color: #e7ad7f;
+    opacity: 1
+}
+
+.nav-list > .nav-item--has-children:not(.nav-item--mega) > .nav-submenu {
+    max-height: none;
+    overflow: visible
+}
+
 .header__contact {
     display: flex;
     gap: 13px;
@@ -1377,6 +1397,11 @@ h2 em {
     .header__contact {
         justify-content: space-between;
         padding-top: 2px
+    }
+
+    .header__language {
+        margin-inline-start: 0;
+        padding: 10px 0
     }
 
     .hero {
