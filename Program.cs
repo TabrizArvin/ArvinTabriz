@@ -12,6 +12,10 @@ builder.Services
         options.LoginPath = "/Admin/Login";
         options.AccessDeniedPath = "/Admin/Login";
         options.Cookie.Name = "ArvinTabriz.Admin";
+        options.Cookie.HttpOnly = true;
+        options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+        options.Cookie.SameSite = SameSiteMode.Strict;
+        options.ExpireTimeSpan = TimeSpan.FromHours(8);
         options.SlidingExpiration = true;
     });
 builder.Services.AddAuthorization();
