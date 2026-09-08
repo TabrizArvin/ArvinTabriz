@@ -214,11 +214,12 @@ textarea {
 .nav-submenu {
     position: absolute;
     z-index: 10;
-    top: calc(100% + 4px);
+    top: 100%;
     right: 0;
     width: 280px;
     max-height: calc(100vh - 108px);
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     padding: 12px;
     border: 1px solid rgba(255, 255, 255, .16);
     border-radius: var(--radius);
@@ -237,7 +238,7 @@ textarea {
     top: 100%;
     right: 0;
     left: 0;
-    height: 5px;
+    height: 0
 }
 
 .nav-item--has-children:hover > .nav-submenu,
@@ -300,14 +301,38 @@ textarea {
 }
 
 .nav-submenu--mega {
-    width: min(820px, calc(100vw - 90px));
-    min-width: 620px;
+    width: min(820px, calc(100vw - 38px));
+    min-width: 0;
     max-height: calc(100vh - 108px);
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 7px;
     align-content: start;
-    scrollbar-gutter: stable
+    scrollbar-gutter: stable;
+    overflow-x: hidden
+}
+
+.nav-submenu--mega .nav-submenu {
+    position: static;
+    display: none;
+    width: auto;
+    max-height: none;
+    overflow: visible;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none
+}
+
+.nav-submenu--mega .nav-item--has-children:hover > .nav-submenu,
+.nav-submenu--mega .nav-item--has-children:focus-within > .nav-submenu,
+.nav-submenu--mega .nav-item--has-children.is-open > .nav-submenu {
+    display: grid
 }
 
 .nav-submenu--mega > li {
