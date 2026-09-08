@@ -138,6 +138,10 @@
                         return;
                     }
 
+                    navigation.querySelectorAll('.nav-link.is-active, .nav-link.is-selected').forEach((selectedLink) => {
+                        selectedLink.classList.remove('is-active', 'is-selected');
+                    });
+                    link.classList.add('is-selected');
                     closeMenu();
                 });
             });
