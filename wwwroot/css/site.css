@@ -110,6 +110,7 @@ textarea {
     display: flex;
     align-items: center;
     gap: 12px;
+    margin-inline-start: auto;
     padding: 6px 10px;
     border: 1px solid rgba(255, 255, 255, .2);
     border-radius: 999px;
@@ -127,7 +128,7 @@ textarea {
     border-radius: 50%;
     background: transparent;
     color: inherit;
-    font: 1.15rem/1 Tahoma, sans-serif;
+    font: 700 1.15rem/1 Tahoma, sans-serif;
     cursor: pointer;
     transition: background .2s, color .2s
 }
@@ -145,7 +146,7 @@ textarea {
     padding-inline-start: 10px;
     border-inline-start: 1px solid rgba(255, 255, 255, .18);
     direction: ltr;
-    font-size: .65rem;
+    font-size: .7rem;
     font-weight: 800;
     letter-spacing: .04em
 }
