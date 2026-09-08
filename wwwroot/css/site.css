@@ -248,18 +248,23 @@ textarea {
     position: relative;
     padding: 7px 0;
     opacity: .72;
-    transition: opacity .2s, color .2s
+    font-weight: 600;
+    transition: opacity .2s, color .2s, font-weight .2s
 }
 
 .nav-link:hover,
 .nav-link:focus-visible,
 .nav-item:focus-within > .nav-item__top > .nav-link,
 .nav-link.is-active {
-    opacity: 1
+    opacity: 1;
+    font-weight: 700
 }
 
 .nav-list > .nav-item > .nav-link.is-active:after,
-.nav-list > .nav-item > .nav-item__top > .nav-link.is-active:after {
+.nav-list > .nav-item > .nav-item__top > .nav-link.is-active:after,
+.nav-list > .nav-item > .nav-link:hover:after,
+.nav-list > .nav-item > .nav-link:focus-visible:after,
+.nav-list > .nav-item:focus-within > .nav-item__top > .nav-link:after {
     content: "";
     position: absolute;
     right: 50%;
