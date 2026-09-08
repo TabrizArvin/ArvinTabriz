@@ -102,28 +102,32 @@ textarea {
     display: flex;
     align-items: center;
     gap: 30px;
-    flex: 1 1 auto;
+    flex: 0 1 auto;
     min-width: 0
 }
 
 .header__tools {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
+    padding: 6px 10px;
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .06);
     color: rgba(255, 255, 255, .82)
 }
 
 .header__search {
     display: grid;
     place-items: center;
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     padding: 0;
-    border: 1px solid rgba(255, 255, 255, .45);
+    border: 1px solid rgba(255, 255, 255, .5);
     border-radius: 50%;
     background: transparent;
     color: inherit;
-    font: 1.25rem/1 Tahoma, sans-serif;
+    font: 1.15rem/1 Tahoma, sans-serif;
     cursor: pointer;
     transition: background .2s, color .2s
 }
@@ -137,7 +141,9 @@ textarea {
 .header__socials {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
+    padding-inline-start: 10px;
+    border-inline-start: 1px solid rgba(255, 255, 255, .18);
     direction: ltr;
     font-size: .65rem;
     font-weight: 800;
@@ -145,6 +151,11 @@ textarea {
 }
 
 .header__socials a {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
     opacity: .72;
     transition: opacity .2s, color .2s
 }
@@ -424,7 +435,7 @@ textarea {
 
 .header__language {
     flex: 0 0 auto;
-    margin-inline-start: 8px;
+    margin-inline: 8px 2px;
     direction: ltr;
     font-size: .72rem;
     opacity: .78;
@@ -435,6 +446,10 @@ textarea {
 .header__language:focus-visible {
     color: #e7ad7f;
     opacity: 1
+}
+
+.header__mobile-actions {
+    display: none
 }
 
 .nav-list > .nav-item--has-children:not(.nav-item--mega) > .nav-submenu {
@@ -1300,6 +1315,23 @@ h2 em {
         display: none
     }
 
+    .header__language,
+    .header__contact {
+        display: none
+    }
+
+    .header__mobile-actions {
+        display: grid;
+        gap: 0;
+        padding-top: 8px;
+        border-top: 1px solid rgba(255, 255, 255, .12)
+    }
+
+    .header__mobile-actions a {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, .08)
+    }
+
     .site-header.is-menu-open .header__navigation {
         opacity: 1;
         visibility: visible;
@@ -1392,16 +1424,6 @@ h2 em {
 
     .nav-submenu li:last-child>a {
         border-bottom: 0
-    }
-
-    .header__contact {
-        justify-content: space-between;
-        padding-top: 2px
-    }
-
-    .header__language {
-        margin-inline-start: 0;
-        padding: 10px 0
     }
 
     .hero {
