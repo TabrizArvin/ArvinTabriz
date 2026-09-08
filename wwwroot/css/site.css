@@ -176,7 +176,7 @@ textarea {
 .nav-item__top {
     display: flex;
     align-items: center;
-    gap: 2px
+    gap: 0
 }
 
 .nav-link,
@@ -208,41 +208,16 @@ textarea {
 }
 
 .nav-submenu-toggle {
-    display: grid;
-    place-items: center;
-    width: 24px;
-    height: 30px;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    color: rgba(255, 255, 255, .6);
-    cursor: pointer;
-    font: inherit
-}
-
-.nav-submenu-toggle:hover,
-.nav-submenu-toggle:focus-visible {
-    color: #e7ad7f
-}
-
-.nav-caret {
-    display: block;
-    font-size: .85rem;
-    line-height: 1;
-    transition: transform .2s
-}
-
-.nav-item.is-open > .nav-item__top .nav-caret {
-    transform: rotate(-90deg)
+    display: none
 }
 
 .nav-submenu {
     position: absolute;
     z-index: 10;
-    top: calc(100% + 14px);
+    top: calc(100% + 4px);
     right: 0;
     width: 280px;
-    max-height: calc(100vh - 130px);
+    max-height: calc(100vh - 108px);
     overflow: auto;
     padding: 12px;
     border: 1px solid rgba(255, 255, 255, .16);
@@ -254,6 +229,15 @@ textarea {
     pointer-events: none;
     transform: translateY(8px);
     transition: opacity .2s, visibility .2s, transform .2s
+}
+
+.nav-item--has-children::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    height: 5px;
 }
 
 .nav-item--has-children:hover > .nav-submenu,
@@ -301,8 +285,7 @@ textarea {
     position: absolute;
     top: 2px;
     left: 0;
-    width: 28px;
-    color: rgba(255, 255, 255, .45)
+    width: 0
 }
 
 .nav-submenu .nav-item__top > .nav-submenu__heading {
@@ -311,7 +294,7 @@ textarea {
 }
 
 .nav-submenu .nav-submenu {
-    top: -12px;
+    top: -8px;
     right: calc(100% + 8px);
     transform: translateX(8px)
 }
@@ -319,10 +302,12 @@ textarea {
 .nav-submenu--mega {
     width: min(820px, calc(100vw - 90px));
     min-width: 620px;
+    max-height: calc(100vh - 108px);
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 7px;
-    align-content: start
+    align-content: start;
+    scrollbar-gutter: stable
 }
 
 .nav-submenu--mega > li {
@@ -1174,6 +1159,8 @@ h2 em {
         top: calc(100% + 10px);
         right: 0;
         left: 0;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
         display: grid;
         gap: 14px;
         padding: 16px 18px 18px;
@@ -1220,12 +1207,6 @@ h2 em {
     }
 
     .nav-submenu-toggle {
-        width: 38px;
-        height: 38px
-    }
-
-    .nav-item--has-children:hover > .nav-submenu,
-    .nav-item--has-children:focus-within > .nav-submenu {
         display: none
     }
 
@@ -1281,12 +1262,6 @@ h2 em {
 
     .nav-submenu li:last-child>a {
         border-bottom: 0
-    }
-
-    .nav-submenu .nav-submenu-toggle {
-        position: static;
-        width: 36px;
-        height: 36px
     }
 
     .header__contact {
