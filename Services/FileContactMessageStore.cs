@@ -79,12 +79,22 @@ public sealed class FileContactMessageStore : IContactMessageStore
     private async Task SaveAsync(List<ContactSubmission> messages, CancellationToken cancellationToken)
     {
         Directory.CreateDirectory(Path.GetDirectoryName(_filePath)!);
-        var temporaryPath = $"{_filePath}.tmp";
+        var temporaryPath = $"{_filePath}.{Guid.NewGuid():N}.tmp";
         await using (var stream = File.Create(temporaryPath))
         {
             await JsonSerializer.SerializeAsync(stream, messages, _jsonOptions, cancellationToken);
         }
 
-        File.Move(temporaryPath, _filePath, true);
+        try
+        {
+            File.Move(temporaryPath, _filePath, true);
+        }
+        finally
+        {
+            if (File.Exists(temporaryPath))
+            {
+                File.Delete(temporaryPath);
+            }
+        }
     }
 }

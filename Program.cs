@@ -1,10 +1,32 @@
 using ArvinTabriz.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<IContactMessageStore, FileContactMessageStore>();
+builder.Services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    options.AddPolicy("contact", context =>
+    {
+        if (!HttpMethods.IsPost(context.Request.Method))
+        {
+            return RateLimitPartition.GetNoLimiter<string>("contact-get");
+        }
+
+        return
+        RateLimitPartition.GetFixedWindowLimiter(
+            context.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+            _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = 3,
+                Window = TimeSpan.FromMinutes(10),
+                QueueLimit = 0
+            });
+    });
+});
 builder.Services
     .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -31,6 +53,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseRateLimiter();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapRazorPages();
