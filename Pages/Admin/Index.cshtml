@@ -6,8 +6,39 @@
 <section class="admin-dashboard">
     <div class="admin-dashboard__heading"><div><p class="eyebrow"><span></span>نمای کلی</p><h1>داشبورد مدیریت</h1><p>درخواست‌های ثبت‌شده از وب‌سایت را از اینجا پیگیری کنید.</p></div><a class="admin-view-site" asp-page="/Index">مشاهده وب‌سایت ↙</a></div>
     <div class="admin-stats"><article><strong>@Model.TotalCount</strong><span>کل درخواست‌ها</span></article><article><strong>@Model.NewCount</strong><span>درخواست جدید</span></article><article><strong>@Model.InProgressCount</strong><span>در حال پیگیری</span></article><article><strong>@Model.ClosedCount</strong><span>بسته‌شده</span></article></div>
-    <div class="admin-requests"><div class="admin-requests__title"><h2>درخواست‌ها</h2><span>@Model.Messages.Count مورد</span></div>
+    <div class="admin-requests"><div class="admin-requests__title"><h2>درخواست‌ها</h2><span>@Model.TotalFilteredCount مورد</span></div>
+    <form class="admin-filters" method="get">
+        <label>
+            <span>جست‌وجو</span>
+            <input type="search" name="Search" value="@Model.Search" placeholder="نام، تلفن، ایمیل یا متن پیام" />
+        </label>
+        <label>
+            <span>وضعیت</span>
+            <select name="Status">
+                <option value="">همه وضعیت‌ها</option>
+                @foreach (var status in Enum.GetValues<ContactMessageStatus>())
+                {
+                    <option value="@status" selected="@(Model.Status == status)">@Model.StatusLabel(status)</option>
+                }
+            </select>
+        </label>
+        <button type="submit">اعمال فیلتر</button>
+        @if (!string.IsNullOrWhiteSpace(Model.Search) || Model.Status.HasValue)
+        {
+            <a href="@Url.Page("/Admin/Index")">حذف فیلتر</a>
+        }
+    </form>
     @if (Model.Messages.Count == 0) { <p class="admin-empty">هنوز درخواستی از فرم تماس ثبت نشده است.</p> }
     else { <div class="admin-table-wrap"><table><thead><tr><th>مخاطب</th><th>پیام</th><th>زمان ثبت</th><th>وضعیت</th><th>عملیات</th></tr></thead><tbody>@foreach (var message in Model.Messages) { <tr><td><strong>@message.Name</strong><a href="tel:@message.Phone">@message.Phone</a>@if (!string.IsNullOrWhiteSpace(message.Email)) { <a href="mailto:@message.Email">@message.Email</a> }</td><td class="admin-message">@message.Message</td><td>@message.SubmittedAtUtc.ToLocalTime().ToString("yyyy/MM/dd HH:mm")</td><td><span class="status status--@message.Status.ToString().ToLowerInvariant()">@Model.StatusLabel(message.Status)</span></td><td><form method="post" asp-page-handler="Status"><input type="hidden" name="id" value="@message.Id" /><select name="status" aria-label="وضعیت @message.Name">@foreach (var status in Enum.GetValues<ContactMessageStatus>()) { if (status == message.Status) { <option value="@status" selected>@Model.StatusLabel(status)</option> } else { <option value="@status">@Model.StatusLabel(status)</option> } }</select><button type="submit">ثبت</button></form></td></tr> }</tbody></table></div> }
+    @if (Model.PageCount > 1)
+    {
+        <nav class="admin-pagination" aria-label="صفحه‌های درخواست‌ها">
+            @for (var page = 1; page <= Model.PageCount; page++)
+            {
+                var pageNumber = page;
+                <a class="@(pageNumber == Model.PageNumber ? "is-current" : "")" asp-page="/Admin/Index" asp-route-Search="@Model.Search" asp-route-Status="@Model.Status" asp-route-page="@pageNumber" aria-current="@(pageNumber == Model.PageNumber ? "page" : null)">@pageNumber</a>
+            }
+        </nav>
+    }
     </div>
 </section>
