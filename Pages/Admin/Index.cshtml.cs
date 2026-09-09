@@ -18,6 +18,7 @@ public class IndexModel(IContactMessageStore contactMessageStore) : PageModel
     public int ClosedCount { get; private set; }
     public int TotalFilteredCount { get; private set; }
     public int PageCount => Math.Max(1, (int)Math.Ceiling(TotalFilteredCount / (double)PageSize));
+    public bool HasFilters => !string.IsNullOrWhiteSpace(Search) || Status.HasValue;
 
     [BindProperty(SupportsGet = true)]
     public string? Search { get; set; }
@@ -67,7 +68,11 @@ public class IndexModel(IContactMessageStore contactMessageStore) : PageModel
             return BadRequest();
         }
 
-        await contactMessageStore.UpdateStatusAsync(id, status);
+        if (!await contactMessageStore.UpdateStatusAsync(id, status))
+        {
+            return NotFound();
+        }
+
         return RedirectToPage(new { Search, Status, page = PageNumber });
     }
 
