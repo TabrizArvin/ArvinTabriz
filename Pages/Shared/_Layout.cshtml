@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="آروین تبریز؛ طراحی، تولید، تأمین و بازسازی تجهیزات تخصصی صنعت حمل‌ونقل ریلی." />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://arvintabriz.com/" />
     <meta property="og:locale" content="fa_IR" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="آروین تبریز" />
     <meta property="og:title" content="@ViewData["Title"] - آروین تبریز" />
     <meta property="og:description" content="آروین تبریز؛ طراحی، تولید، تأمین و بازسازی تجهیزات تخصصی صنعت حمل‌ونقل ریلی." />
-    <meta property="og:url" content="https://arvintabriz.com/" />
     <meta name="twitter:card" content="summary" />
     <title>@ViewData["Title"] - آروین تبریز</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -20,7 +18,6 @@
             "@@context": "https://schema.org",
             "@@type": "Organization",
             "name": "آروین تبریز",
-            "url": "https://arvintabriz.com/",
             "email": "mailto:info@arvintabriz.com",
             "description": "طراحی، تولید، تأمین و بازسازی تجهیزات تخصصی صنعت حمل‌ونقل ریلی."
         }
@@ -36,20 +33,18 @@
             <div class="header__navigation" data-site-navigation>
                 @await Html.PartialAsync("_MainNavigation")
                 <div class="header__mobile-actions">
-                    <a href="https://arvintabriz.com/en/" aria-label="English">🇬🇧 English</a>
+                    <span aria-label="English">🇬🇧 English</span>
                     <a href="/#contact">تماس با ما</a>
                 </div>
             </div>
+            <span class="header__language" aria-label="English">🇬🇧</span>
             <a class="header__contact" href="/#contact"><span>تماس با ما</span><b aria-hidden="true">↙</b></a>
-
-            <a class="header__language" href="https://arvintabriz.com/en/" aria-label="English">🇬🇧</a>
             <div class="header__tools" aria-label="ابزارهای سایت">
                 <span class="header__socials" aria-label="شبکه‌های اجتماعی">
-                    <a href="https://arvintabriz.com/" aria-label="اینستاگرام">ig</a>
-                    <a href="https://arvintabriz.com/" aria-label="لینکدین">in</a>
+                    <span aria-label="اینستاگرام">ig</span>
+                    <span aria-label="لینکدین">in</span>
                 </span>
                 <button class="header__search" type="button" aria-label="جست‌وجو">⌕</button>
-                
             </div>
             <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-navigation" aria-label="منوی اصلی">
                 <span></span><span></span><span></span>
