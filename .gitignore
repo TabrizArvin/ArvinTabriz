@@ -12,3 +12,6 @@ obj/
 *.suo
 
 App_Data/contact-messages.json
+App_Data/*.db
+App_Data/*.db-shm
+App_Data/*.db-wal
