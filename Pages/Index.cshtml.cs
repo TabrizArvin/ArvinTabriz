@@ -2,9 +2,11 @@ using ArvinTabriz.Models;
 using ArvinTabriz.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace ArvinTabriz.Pages;
 
+[EnableRateLimiting("contact")]
 public class IndexModel : PageModel
 {
     private readonly IContactMessageStore _contactMessageStore;
