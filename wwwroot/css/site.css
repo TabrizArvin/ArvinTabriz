@@ -253,7 +253,7 @@ textarea {
     letter-spacing: .04em
 }
 
-.header__socials a {
+.header__socials > span {
     display: grid;
     place-items: center;
     width: 22px;
@@ -263,8 +263,18 @@ textarea {
     transition: opacity .2s, color .2s
 }
 
-.header__socials a:hover,
-.header__socials a:focus-visible {
+.header__socials svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.7
+}
+
+.header__socials > span:hover,
+.header__socials > span:focus-visible {
     color: #e7ad7f;
     opacity: 1
 }
