@@ -279,6 +279,20 @@ textarea {
     opacity: 1
 }
 
+.language-flag {
+    display: inline-block;
+    width: 24px;
+    height: 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .25)
+}
+
+.header__mobile-actions .language-flag {
+    margin-inline-end: 5px
+}
+
 .brand,
 .site-footer__brand {
     display: flex;
