@@ -1368,12 +1368,33 @@ h2 em {
     }
 
     .nav-list > .nav-item > .nav-link.is-active:after,
-    .nav-list > .nav-item > .nav-item__top > .nav-link.is-active:after {
-        display: none
+    .nav-list > .nav-item > .nav-item__top > .nav-link.is-active:after,
+    .nav-list > .nav-item > .nav-link.is-selected:after,
+    .nav-list > .nav-item > .nav-item__top > .nav-link.is-selected:after {
+        display: block;
+        right: auto;
+        left: 0;
+        bottom: 16px;
+        transform: none
     }
 
     .nav-submenu-toggle {
-        display: none
+        display: grid;
+        place-items: center;
+        width: 38px;
+        min-width: 38px;
+        height: 44px;
+        padding: 0;
+        border: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, .12);
+        background: transparent;
+        color: rgba(255, 255, 255, .7);
+        cursor: pointer
+    }
+
+    .nav-submenu-toggle[aria-expanded="true"] {
+        color: #e6a26f;
+        transform: rotate(180deg)
     }
 
     .nav-item--has-children.is-open > .nav-submenu {

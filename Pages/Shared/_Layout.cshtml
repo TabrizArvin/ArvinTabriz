@@ -132,7 +132,11 @@
                     const item = link.closest('.nav-item--has-children');
                     const toggle = item?.querySelector(':scope > .nav-item__top > [data-submenu-toggle]');
 
-                    if (link.getAttribute('href') === '#' && toggle) {
+                    const isMobileParentLink = window.innerWidth <= 850
+                        && toggle
+                        && link.closest('.nav-item__top');
+
+                    if ((link.getAttribute('href') === '#' || isMobileParentLink) && toggle) {
                         event.preventDefault();
                         toggle.click();
                         return;
