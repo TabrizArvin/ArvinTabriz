@@ -139,6 +139,108 @@ textarea {
     color: var(--forest)
 }
 
+.site-search {
+    position: fixed;
+    z-index: 20;
+    inset: 0;
+    display: grid;
+    place-items: start center;
+    padding: 110px 20px 30px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .2s, visibility .2s
+}
+
+.site-search.is-open {
+    visibility: visible;
+    opacity: 1
+}
+
+.site-search__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 19, 14, .72);
+    backdrop-filter: blur(5px)
+}
+
+.site-search__panel {
+    position: relative;
+    width: min(680px, 100%);
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+    padding: 28px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: var(--radius);
+    background: #172a22;
+    color: #fff;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, .3)
+}
+
+.site-search__heading {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 20px
+}
+
+.site-search__heading h2 {
+    margin: 8px 0 22px;
+    font-size: clamp(1.4rem, 4vw, 2rem)
+}
+
+.site-search__close {
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 50%;
+    background: transparent;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer
+}
+
+.site-search__input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 4px;
+    outline: 0;
+    background: rgba(255, 255, 255, .08);
+    color: #fff;
+    font: inherit
+}
+
+.site-search__input:focus {
+    border-color: #e6a26f;
+    box-shadow: 0 0 0 3px rgba(230, 162, 111, .15)
+}
+
+.site-search__status {
+    margin: 14px 0 8px;
+    color: rgba(255, 255, 255, .62);
+    font-size: .8rem
+}
+
+.site-search__results {
+    display: grid;
+    gap: 4px
+}
+
+.site-search__result {
+    display: block;
+    padding: 11px 12px;
+    border-radius: 3px;
+    color: rgba(255, 255, 255, .86);
+    transition: background .2s, color .2s
+}
+
+.site-search__result:hover,
+.site-search__result:focus-visible {
+    background: rgba(255, 255, 255, .1);
+    color: #fff
+}
+
 .header__socials {
     display: flex;
     align-items: center;

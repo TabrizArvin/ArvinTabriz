@@ -37,6 +37,23 @@
         </div>
     </header>
 
+    <div class="site-search" data-site-search aria-hidden="true">
+        <div class="site-search__backdrop" data-search-close></div>
+        <section class="site-search__panel" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+            <div class="site-search__heading">
+                <div>
+                    <p class="eyebrow"><span></span>جست‌وجو</p>
+                    <h2 id="site-search-title">چه چیزی پیدا کنیم؟</h2>
+                </div>
+                <button type="button" class="site-search__close" data-search-close aria-label="بستن جست‌وجو">×</button>
+            </div>
+            <label class="sr-only" for="site-search-input">عبارت جست‌وجو</label>
+            <input id="site-search-input" class="site-search__input" type="search" placeholder="نام محصول، خدمت یا بخش موردنظر..." autocomplete="off" />
+            <p class="site-search__status" data-search-status>برای شروع، عبارت موردنظر را وارد کنید.</p>
+            <div class="site-search__results" data-search-results></div>
+        </section>
+    </div>
+
     <main class="main">
         @RenderBody()
     </main>
@@ -54,6 +71,11 @@
             const menuToggle = document.querySelector('[data-menu-toggle]');
             const navigation = document.querySelector('[data-site-navigation]');
             const submenuToggles = Array.from(navigation?.querySelectorAll('[data-submenu-toggle]') ?? []);
+            const search = document.querySelector('[data-site-search]');
+            const searchInput = search?.querySelector('[data-search-input]') ?? document.querySelector('#site-search-input');
+            const searchResults = search?.querySelector('[data-search-results]');
+            const searchStatus = search?.querySelector('[data-search-status]');
+            const searchButton = document.querySelector('.header__search');
 
             if (!header) {
                 return;
@@ -91,6 +113,48 @@
                 closeSubmenus();
             };
 
+            const searchItems = Array.from(document.querySelectorAll('.nav a[href], main section[id] h1, main section[id] h2, main section[id] h3'))
+                .map((element) => {
+                    const link = element.matches('a') ? element : element.closest('section')?.querySelector('a[href]');
+                    return link ? { title: element.textContent?.trim() ?? '', href: link.getAttribute('href') ?? '#' } : null;
+                })
+                .filter((item) => item && item.title.length > 1);
+
+            const renderSearchResults = () => {
+                if (!searchInput || !searchResults || !searchStatus) {
+                    return;
+                }
+
+                const query = searchInput.value.trim().toLocaleLowerCase();
+                searchResults.replaceChildren();
+                if (!query) {
+                    searchStatus.textContent = 'برای شروع، عبارت موردنظر را وارد کنید.';
+                    return;
+                }
+
+                const matches = searchItems.filter((item) => item.title.toLocaleLowerCase().includes(query)).slice(0, 12);
+                searchStatus.textContent = matches.length ? `${matches.length} نتیجه پیدا شد.` : 'نتیجه‌ای پیدا نشد.';
+                matches.forEach((item) => {
+                    const result = document.createElement('a');
+                    result.className = 'site-search__result';
+                    result.href = item.href;
+                    result.textContent = item.title;
+                    searchResults.append(result);
+                });
+            };
+
+            const closeSearch = () => {
+                search?.classList.remove('is-open');
+                search?.setAttribute('aria-hidden', 'true');
+            };
+
+            const openSearch = () => {
+                search?.classList.add('is-open');
+                search?.setAttribute('aria-hidden', 'false');
+                searchInput?.focus();
+                renderSearchResults();
+            };
+
             syncHeader();
             window.addEventListener('scroll', syncHeader, { passive: true });
 
@@ -101,6 +165,9 @@
                     closeSubmenus();
                 }
             });
+            searchButton?.addEventListener('click', openSearch);
+            searchInput?.addEventListener('input', renderSearchResults);
+            search?.querySelectorAll('[data-search-close]').forEach((closeButton) => closeButton.addEventListener('click', closeSearch));
 
             submenuToggles.forEach((toggle) => {
                 toggle.addEventListener('click', (event) => {
@@ -152,6 +219,7 @@
             document.addEventListener('keydown', (event) => {
                 if (event.key === 'Escape') {
                     closeMenu();
+                    closeSearch();
                 }
             });
             window.addEventListener('resize', () => {
