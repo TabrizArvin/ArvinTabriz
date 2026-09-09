@@ -1917,6 +1917,46 @@ h2 em {
     font-size: .85rem;
 }
 
+.admin-filters {
+    display: flex;
+    align-items: end;
+    gap: .75rem;
+    flex-wrap: wrap;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid #edf0eb;
+}
+
+.admin-filters label {
+    display: grid;
+    gap: .35rem;
+    flex: 1 1 220px;
+    color: #687068;
+    font-size: .78rem;
+}
+
+.admin-filters input,
+.admin-filters select,
+.admin-filters button {
+    min-height: 40px;
+    padding: .45rem .65rem;
+    border: 1px solid #ccd3ca;
+    background: #fff;
+    color: #213b29;
+    font: inherit;
+}
+
+.admin-filters button {
+    cursor: pointer;
+    background: #213b29;
+    color: #fff;
+}
+
+.admin-filters a {
+    padding: .6rem .25rem;
+    color: #687068;
+    font-size: .8rem;
+}
+
 .admin-empty {
     color: #687068;
     padding: 2rem 0;
@@ -1998,6 +2038,31 @@ h2 em {
 .admin-requests button {
     cursor: pointer;
     color: #213b29;
+}
+
+.admin-pagination {
+    display: flex;
+    justify-content: center;
+    gap: .35rem;
+    padding-top: 1.2rem;
+}
+
+.admin-pagination a {
+    display: grid;
+    place-items: center;
+    min-width: 34px;
+    height: 34px;
+    border: 1px solid #ccd3ca;
+    color: #4d6252;
+    font-size: .82rem;
+}
+
+.admin-pagination a.is-current,
+.admin-pagination a:hover,
+.admin-pagination a:focus-visible {
+    border-color: #213b29;
+    background: #213b29;
+    color: #fff;
 }
 
 .admin-body--login {

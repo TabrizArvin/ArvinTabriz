@@ -9,13 +9,56 @@ namespace ArvinTabriz.Pages.Admin;
 [Authorize]
 public class IndexModel(IContactMessageStore contactMessageStore) : PageModel
 {
-    public IReadOnlyList<ContactSubmission> Messages { get; private set; } = [];
-    public int TotalCount => Messages.Count;
-    public int NewCount => Messages.Count(message => message.Status == ContactMessageStatus.New);
-    public int InProgressCount => Messages.Count(message => message.Status == ContactMessageStatus.InProgress);
-    public int ClosedCount => Messages.Count(message => message.Status == ContactMessageStatus.Closed);
+    private const int PageSize = 10;
 
-    public async Task OnGetAsync() => Messages = await contactMessageStore.GetAllAsync();
+    public IReadOnlyList<ContactSubmission> Messages { get; private set; } = [];
+    public int TotalCount { get; private set; }
+    public int NewCount { get; private set; }
+    public int InProgressCount { get; private set; }
+    public int ClosedCount { get; private set; }
+    public int TotalFilteredCount { get; private set; }
+    public int PageCount => Math.Max(1, (int)Math.Ceiling(TotalFilteredCount / (double)PageSize));
+
+    [BindProperty(SupportsGet = true)]
+    public string? Search { get; set; }
+
+    [BindProperty(SupportsGet = true)]
+    public ContactMessageStatus? Status { get; set; }
+
+    [BindProperty(SupportsGet = true, Name = "page")]
+    public int PageNumber { get; set; } = 1;
+
+    public async Task OnGetAsync()
+    {
+        var allMessages = await contactMessageStore.GetAllAsync();
+        TotalCount = allMessages.Count;
+        NewCount = allMessages.Count(message => message.Status == ContactMessageStatus.New);
+        InProgressCount = allMessages.Count(message => message.Status == ContactMessageStatus.InProgress);
+        ClosedCount = allMessages.Count(message => message.Status == ContactMessageStatus.Closed);
+
+        var query = allMessages.AsEnumerable();
+        if (!string.IsNullOrWhiteSpace(Search))
+        {
+            query = query.Where(message =>
+                message.Name.Contains(Search, StringComparison.OrdinalIgnoreCase)
+                || message.Phone.Contains(Search, StringComparison.OrdinalIgnoreCase)
+                || (message.Email?.Contains(Search, StringComparison.OrdinalIgnoreCase) ?? false)
+                || message.Message.Contains(Search, StringComparison.OrdinalIgnoreCase));
+        }
+
+        if (Status.HasValue)
+        {
+            query = query.Where(message => message.Status == Status.Value);
+        }
+
+        var filteredMessages = query.ToList();
+        TotalFilteredCount = filteredMessages.Count;
+        PageNumber = Math.Clamp(PageNumber, 1, PageCount);
+        Messages = filteredMessages
+            .Skip((PageNumber - 1) * PageSize)
+            .Take(PageSize)
+            .ToList();
+    }
 
     public async Task<IActionResult> OnPostStatusAsync(Guid id, ContactMessageStatus status)
     {
@@ -25,7 +68,7 @@ public class IndexModel(IContactMessageStore contactMessageStore) : PageModel
         }
 
         await contactMessageStore.UpdateStatusAsync(id, status);
-        return RedirectToPage();
+        return RedirectToPage(new { Search, Status, page = PageNumber });
     }
 
     public string StatusLabel(ContactMessageStatus status) => status switch
